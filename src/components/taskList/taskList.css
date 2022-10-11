@@ -1,0 +1,76 @@
+:root {
+    color: rgba(255, 255 255, 0.87);
+    background-color: #242424;
+    color: white;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    --global-border-radius:10px;
+    --header-color: rgba(255, 255, 255, 0.808);
+    --text-color:rgba(255, 255, 255, 0.849) ;
+  }
+  
+
+ul, li{
+    margin: 0;
+   list-style-type: none;
+   padding: 0;
+   border: 0;
+   accent-color: crimson;
+}
+.taskList{
+    margin-top: 15px;
+   height: 200px;
+   overflow: hidden;
+   overflow-y: scroll;
+   scrollbar-width: none;
+}
+.taskList::-webkit-scrollbar{
+    display: none;
+}
+.Task,
+.left,
+.right{
+    display: flex;
+}
+.Task{
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #726a6a;
+    padding-bottom: 10px;
+}
+.Task:not(:first-child){
+    margin-top: 15px;
+}
+.left{
+    width: 70%;
+    align-items: center;
+    gap: 10px;
+}
+
+.left .taskcontent{
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text-color);
+    width: 90%;
+    word-wrap: break-word;
+}
+.left, 
+.right{
+   gap: 10px; 
+   align-items: center;
+}
+
+.right>span{
+    cursor: pointer;
+    
+}
+.right>span:first-child:hover{
+    background: #a87da4;
+}
+.right>span:nth-child(2):hover{
+    background: #e70d0d;
+}
+

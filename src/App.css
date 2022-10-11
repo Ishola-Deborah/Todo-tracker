@@ -1,0 +1,85 @@
+:root {
+  background-color: #d3cccc;
+  color: white;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  --global-border-radius:12px;
+  --header-color: rgba(255, 255, 255, 0.808)
+  --text-color: white;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+.app{
+ width: 22rem;
+ height: 30rem;
+ color: #fff;
+ margin: 2rem auto; 
+ padding: 1.5rem 1.2rem;
+border-radius: var(--global-border-radius);
+background: url("../assets/ocean.jpg");
+background-position: center;
+border: 1px solid #f3e9e9c2;
+
+}
+.title{
+  font-weight: 500;
+  color: rgba(255, 255 255, 0.87);
+  text-transform: capitalize;
+  margin-bottom: 1.5rem;
+}
+label{
+  text-transform: capitalize;
+  color: var(--header-color);
+  font-weight: 100;
+}
+header{
+  width: 100%;
+
+}
+header .inputContainer{
+  width: 100%;
+  background-color: rgb(168, 167, 177);
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding: 0.7rem;
+  border-radius: var(--global-border-radius);
+}
+input[type="text"]{
+  width: 75%;
+  padding: 0.4rem;
+}
+input[type="text"], button{
+  border: none;
+  outline: none;
+}
+button{
+  padding: 0.4rem 0.8rem;
+  text-transform: capitalize;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+button:hover{
+  background: linear-gradient(90deg,#301136,#5b567e);
+  color:#fff;
+}
+
+/*Task Styling*/
+.tasksContainer h3{
+  margin-top: 20px;
+  color: var(--header-color);
+}
+h2::first-letter,
+h3::first-letter{
+  color: crimson;
+}
