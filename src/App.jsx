@@ -35,11 +35,15 @@ const App = () => {
       setInputText("");
       
     } else if (btnText === "save") {
-
+      setInputText("");
       setTasks([...tasks].map((currentTask) =>{
         if(currentTask.id === editedID){
+          setInputText("");
+          setBtnText("add");
           return {...currentTask, task: inputText };
         } else {
+          setInputText("");
+          setBtnText("add");
           return currentTask;
         }
       }))
