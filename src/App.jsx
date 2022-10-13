@@ -4,9 +4,9 @@ import "./App.css";
 import TaskList from "./components/taskList/TaskList";
 
 const taskContent = [
-  { id: 0, task: "buy a burger and learn to love", done: false },
-  { id: 1, task: "visit zimbabwe", done: false },
-  { id: 2, task: "If not working, let it go", done: false },
+  // { id: 0, task: "buy a burger and learn to love", done: false },
+  // { id: 1, task: "visit zimbabwe", done: false },
+  // { id: 2, task: "If not working, let it go", done: false },
 ];
 
 let nextID = 3;
