@@ -83,3 +83,50 @@ h2::first-letter,
 h3::first-letter{
   color: crimson;
 }
+
+footer{
+  overflow: hidden;
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+footer p{
+  font-size: 11px;
+  font-weight: 300;
+  text-transform: capitalize;
+  animation: animateText 10s infinite;
+  transition: all 0.5s;
+  letter-spacing: 1px;
+}
+footer button{
+  font-size: 12px;
+  padding: 0.5rem 0.7rem;
+  border-radius: 5px;
+  background: linear-gradient(90deg, black, crimson);
+  color: #fff;
+  cursor: pointer;
+}
+.emptyNote{
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 40%;
+}
+.emptyNote::first-letter{
+  color: crimson;
+  padding: 0.1rem 0.5rem;
+  background-color: rgba(220, 20, 60, 0.158);
+  margin-right: 0.5rem;
+  box-shadow: 1px 2px 3px 2px crimson;
+  font-weight: 600;
+}
+footer button:hover{
+  background: linear-gradient(90deg, black, crimson);
+  color: #fff;
+}
+@keyframes animateText {
+  100%{
+    transform: translate(-100%, 0);
+    -moz-transform: translate(-100%, 0);
+  }
+}

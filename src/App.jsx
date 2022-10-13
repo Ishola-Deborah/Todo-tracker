@@ -4,9 +4,9 @@ import "./App.css";
 import TaskList from "./components/taskList/TaskList";
 
 const taskContent = [
-  { id: 0, task: "buy a burger and learn to love", done: false},
+  { id: 0, task: "buy a burger and learn to love", done: false },
   { id: 1, task: "visit zimbabwe", done: false },
-  { id: 2, task: "If not working, let it go", done: false},
+  { id: 2, task: "If not working, let it go", done: false },
 ];
 
 let nextID = 3;
@@ -14,7 +14,7 @@ let nextID = 3;
 const App = () => {
   const [tasks, setTasks] = useState(taskContent);
   const [inputText, setInputText] = useState("");
-  
+
   const [btnText, setBtnText] = useState("Add");
   const [editedID, setEditedID] = useState(0);
 
@@ -29,24 +29,32 @@ const App = () => {
       const newTask = {
         id: nextID++,
         task: inputText,
-        done: false
+        done: false,
       };
-      setTasks([...tasks, newTask]);
+      setTasks([newTask, ...tasks]);
       setInputText("");
-      
     } else if (btnText === "save") {
       setInputText("");
-      setTasks([...tasks].map((currentTask) =>{
-        if(currentTask.id === editedID){
-          setInputText("");
-          setBtnText("add");
-          return {...currentTask, task: inputText };
-        } else {
-          setInputText("");
-          setBtnText("add");
-          return currentTask;
-        }
-      }))
+      setTasks(
+        [...tasks].map((currentTask) => {
+          if (currentTask.id === editedID) {
+            setInputText("");
+            setBtnText("add");
+            return { ...currentTask, task: inputText };
+          } else {
+            setInputText("");
+            setBtnText("add");
+            return currentTask;
+          }
+        })
+      );
+    }
+  };
+
+  // logic for Keyup
+  const handleKeyUp = (e) => {
+    if (e.key === "Enter") {
+      addTask();
     }
   };
 
@@ -62,19 +70,23 @@ const App = () => {
   //Change Input value
   const handleInputTextandBtn = (e) => {
     setInputText(e.target.value);
-  
+  };
+  //ClerAll logic
+  const deleteAllTask = () => {
+    setTasks([...tasks].filter((task) => task.id === task.length));
   };
 
-
-  const handleFinishedTask= (TaskId, TaskStatus) => {
-    setTasks([...tasks].map((currentTask) => {
-      if(currentTask.id === TaskId){
-        return {...currentTask, done: TaskStatus};
-      } else {
-        return currentTask;
-      }
-    }))
-  }
+  const handleFinishedTask = (TaskId, TaskStatus) => {
+    setTasks(
+      [...tasks].map((currentTask) => {
+        if (currentTask.id === TaskId) {
+          return { ...currentTask, done: TaskStatus };
+        } else {
+          return currentTask;
+        }
+      })
+    );
+  };
   return (
     <div className="app">
       <h2 className="title">Task Tracker</h2>
@@ -87,6 +99,7 @@ const App = () => {
               type="text"
               value={inputText}
               onChange={handleInputTextandBtn}
+              onKeyUp={handleKeyUp}
             />
             <button
               className="addBtn"
@@ -100,14 +113,31 @@ const App = () => {
 
         <div className="tasksContainer">
           <h3 className="tasks">Tasks</h3>
-
-          <TaskList
-            taskList={tasks}
-            deleteTask={deleteTask}
-            editTask={editTask}
-            handleFinishedTask ={handleFinishedTask}
-          />
+          {tasks.length > 0 ? (
+            <div className="tasksMainContainer">
+              <TaskList
+                taskList={tasks}
+                deleteTask={deleteTask}
+                editTask={editTask}
+                handleFinishedTask={handleFinishedTask}
+              />
+            </div>
+          ) : (
+            <div className="emptyNote">No task to show</div>
+          )}
         </div>
+
+        <footer>
+          <p>
+            You have {[...tasks].filter((task) => task.done === false).length}{" "}
+            {""} uncompleted task()
+          </p>
+          {tasks.length > 0 ? (
+            <button onClick={deleteAllTask}>Clear all</button>
+          ) : (
+            ""
+          )}
+        </footer>
       </main>
     </div>
   );
